@@ -10,17 +10,38 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var firstNumber: UITextField!
     
+    @IBOutlet weak var secondNumber: UITextField!
     //var resistanceDigit = 2;
+    
+    @IBOutlet weak var multNumber: UITextField!
+    
+    @IBOutlet weak var results: UILabel!
+    
+    
+    @IBAction func generate(sender: AnyObject) {
+        var firstNum = Int(firstNumber.text!)!
+        var secondNum = Int (secondNumber.text!)!
+        var multNum = Int (multNumber.text!)!
+        print (firstNum)
+        
+        var ans1 = colorCode(firstNum)
+        var ans2 = colorCode(secondNum)
+        var multipliedVal = multiplier(multNum, suffix: "K")
+        var colorShow = colorMult (10)
+        results.text = (ans1 + " " + ans2 + " " + colorShow)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        var ans1 = colorCode(9)
-        var ans2 = colorCode(0)
+        //var ans1 = colorCode(9)
+      //  var ans2 = colorCode(0)
         //var multipliedVal = multiplier(1000, suffix: "K")
-        var totalColor = colorMult(1000)
+       // var totalColor = colorMult(1000)
         
-        print (ans1 + " " + ans2 + " " + " " + totalColor)
+        //print (ans1 + " " + ans2 + " " + " " + totalColor)
         //print (ans2)
         
 
