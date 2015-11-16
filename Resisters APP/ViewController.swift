@@ -18,21 +18,37 @@ class ViewController: UIViewController {
     @IBOutlet weak var multNumber: UITextField!
     
     @IBOutlet weak var results: UILabel!
-    
+ 
     
     @IBAction func generate(sender: AnyObject) {
-        var firstNum = Int(firstNumber.text!)!
-        var secondNum = Int (secondNumber.text!)!
-        var multNum = Int (multNumber.text!)!
-        print (firstNum)
+        // var firstNum = Int(firstNumber.text!)!
+       // var secondNum = Int (secondNumber.text!)!
+        let characters = Array(combinedInput.text!.characters)
         
-        var ans1 = colorCode(firstNum)
-        var ans2 = colorCode(secondNum)
-        var multipliedVal = multiplier(multNum, suffix: "K")
-        var colorShow = colorMult (10)
+        var firstChar = String(characters[0])
+        var secondChar = String(characters[1])
+        
+        var firstNum = Int(firstChar)
+        var secondNum = Int(secondChar)
+        
+        var multNum = Int (multNumber.text!)!
+       // print (firstNum)
+        //User Input to the multiplyer
+        
+        var stringCount = Int ((combinedInput.text?.characters.count)!)
+        var thirdNum = stringCount - 2
+        
+        
+        
+        var ans1 = colorCode(firstNum!)
+        var ans2 = colorCode(secondNum!)
+        //var multipliedVal = multiplier(multNum, suffix: "K")
+        //var colorShow = colorMult (1000000)
+        var colorShow = colorCode(thirdNum)
         results.text = (ans1 + " " + ans2 + " " + colorShow)
         
     }
+    @IBOutlet weak var combinedInput: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -43,9 +59,9 @@ class ViewController: UIViewController {
         
         //print (ans1 + " " + ans2 + " " + " " + totalColor)
         //print (ans2)
-        
-
+ 
     }
+    /*
     func multiplier(multNum: Int, suffix: String ) -> Int{
         
         
@@ -62,7 +78,7 @@ class ViewController: UIViewController {
         }
         
         
-    
+    */
     
     func colorCode(resistanceNum: Int) -> String {
         
@@ -132,4 +148,3 @@ class ViewController: UIViewController {
 
 
 }
-
