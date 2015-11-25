@@ -10,16 +10,62 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var firstNumber: UITextField!
-    
-    @IBOutlet weak var secondNumber: UITextField!
-    //var resistanceDigit = 2;
-    
-    @IBOutlet weak var multNumber: UITextField!
     
     @IBOutlet weak var results: UILabel!
- 
     
+    @IBAction func colorOneButton(sender: UIButton) {
+        print("one")
+    }
+    @IBOutlet weak var colorStripeOne: UIView!
+    
+    
+    @IBAction func colorTwoButton(sender: UIButton) {
+        print("Two")
+    }
+    @IBOutlet weak var colorStripeTwo: UIView!
+    
+    
+    @IBAction func colorThreeButton(sender: UIButton) {
+        print("Three")
+    }
+    @IBOutlet weak var colorStripeThree: UIView!
+    
+    
+    @IBAction func colorFourButton(sender: UIButton) {
+        print("Four")
+    }
+    @IBOutlet weak var colorStripeFour: UIView!
+   
+    
+    
+    // Stripe Color Function
+    func stripeColor (stripeView :UIView ,stripeColor :String){
+    
+        switch (stripeColor){
+        case "Black":
+            return stripeView.backgroundColor = UIColor.blackColor()
+        case "Brown":
+            return stripeView.backgroundColor = UIColor.brownColor()
+        case "Red":
+            return stripeView.backgroundColor = UIColor.redColor()
+        case "Orange":
+            return stripeView.backgroundColor = UIColor.orangeColor()
+        case "Yellow":
+            return stripeView.backgroundColor = UIColor.yellowColor()
+        case "Green":
+            return stripeView.backgroundColor = UIColor.greenColor()
+        case "Blue":
+            return stripeView.backgroundColor = UIColor.blueColor()
+        case "Purple":
+            return stripeView.backgroundColor = UIColor.purpleColor()
+        case "Gray":
+            return stripeView.backgroundColor = UIColor.grayColor()
+        case "white":
+            return stripeView.backgroundColor = UIColor.whiteColor()
+        default:
+            return stripeView.backgroundColor = UIColor.whiteColor()
+    }
+    }
     @IBAction func generate(sender: AnyObject) {
         // var firstNum = Int(firstNumber.text!)!
        // var secondNum = Int (secondNumber.text!)!
@@ -31,7 +77,7 @@ class ViewController: UIViewController {
         var firstNum = Int(firstChar)
         var secondNum = Int(secondChar)
         
-        var multNum = Int (multNumber.text!)!
+        var multNum = 1
        // print (firstNum)
         //User Input to the multiplyer
         
@@ -41,16 +87,27 @@ class ViewController: UIViewController {
         
         
         var ans1 = colorCode(firstNum!)
+        //Calling Stripe 1 Color from Function
+        stripeColor(colorStripeOne,stripeColor: ans1)
+        
         var ans2 = colorCode(secondNum!)
-        //var multipliedVal = multiplier(multNum, suffix: "K")
-        //var colorShow = colorMult (1000000)
+        // Calling Stripe 2 Color from Fruction
+        stripeColor(colorStripeTwo,stripeColor: ans2)
+        
         var colorShow = colorCode(thirdNum)
+        // Calling Stripe 3 Color from Fruction
+        stripeColor(colorStripeThree,stripeColor:colorShow)
+        
         results.text = (ans1 + " " + ans2 + " " + colorShow)
         
     }
     @IBOutlet weak var combinedInput: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        generate(self)
+        
+        //stripeColor(colorStripeTwo,stripeColor: "one")
+        //self.colorStripeOne.backgroundColor = UIColor.Color()
         // Do any additional setup after loading the view, typically from a nib.
         //var ans1 = colorCode(9)
       //  var ans2 = colorCode(0)
@@ -99,7 +156,7 @@ class ViewController: UIViewController {
         case 6:
             return "Blue"
         case 7:
-            return "Violet"
+            return "Purple"
         case 8:
             return "Gray"
         case 9:
